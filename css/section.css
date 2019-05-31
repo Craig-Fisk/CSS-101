@@ -1,0 +1,75 @@
+:root {
+    --section-border-width: 0 0 1px 0;
+    --section-border-style: solid;
+    --section-border-color: #333333;
+    --section-box-shadow: 0 0.8rem 0.8rem 0.2rem #33333333;
+    --section-background-color: #ffffff;
+    --section-margin: 0;
+    --section-previous-width: 100%;
+    --section-map-width: 100%;
+
+    --section-card-width: 100%;
+}
+
+.section {
+    box-sizing: border-box;
+    background: var(--section-background-color);
+    border-width: var(--section-border-width);
+    border-style: var(--section-border-style);
+    border-color: var(--section-border-color);
+    padding: var(--gutter);
+    box-shadow: var(--section-box-shadow);
+    margin: var(--section-margin);
+}
+
+.section::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.section.card {
+    width: var(--section-card-width);
+}
+
+.section--previous {
+    width: var(--section-previous-width);
+}
+
+.section--map {
+    width: var(--section-map-width);
+}
+
+.section--map > iframe {
+    width: 100%;
+    min-height: 400px;
+}
+
+.section__heading {
+    margin: 0 0 1rem 0;
+}
+
+.section--blurb .section__image {
+    max-width: 150px;
+    float: right;
+    margin: 0 0 var(--gutter) var(--gutter);
+}
+
+.section__image > img {
+    display: inline-block;
+    max-width: 100%;
+}
+
+@media (min-width:576px) {
+    :root {
+        --section-margin: var(--gutter);
+        --section-card-width: calc(50% - (var(--gutter)*2));
+    }
+}
+
+@media (min-width:992px) {
+    :root {
+        --section-previous-width: calc(100% - (var(--gutter)*2));
+        --section-map-width: 100%;
+    }
+}

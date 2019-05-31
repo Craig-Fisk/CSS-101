@@ -1,0 +1,96 @@
+/* latin-ext */
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v14/S6uyw4BMUTPHjxAwXjeu.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Quicksand Regular'), local('Quicksand-Regular'), url(https://fonts.gstatic.com/s/quicksand/v9/6xKtdSZaM9iE8KbpRA_hJVQNcOM.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: local('Quicksand Medium'), local('Quicksand-Medium'), url(https://fonts.gstatic.com/s/quicksand/v9/6xKodSZaM9iE8KbpRA_p2HcYQcL_B48.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: local('Quicksand Bold'), local('Quicksand-Bold'), url(https://fonts.gstatic.com/s/quicksand/v9/6xKodSZaM9iE8KbpRA_pkHEYQcL_B48.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+:root {
+    --link-color: var(--primary-color);
+    --link-hover-color: var(--alt-color);
+    --body-font: 'Lato', Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    --heading-font: 'Quicksand', 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+    --base-font-size: 10px;
+
+    --h1-size: 4.4rem;
+    --h2-size: 3.8rem;
+    --h3-size: 3rem;
+    --h4-size: 2rem;
+    
+    font-size: var(--base-font-size);
+    font-family: var(--body-font);
+}
+
+p,
+label,
+button,
+a {
+    font-size: 1.6rem;
+}
+
+a,
+a:visited {
+    color: var(--link-color);
+    text-decoration: underline;
+}
+
+a:hover,
+a:active {
+    color: var(--link-hover-color);
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4 {
+    font-family: var(--heading-font);
+}
+
+h1,
+.h1 {
+    font-size: var(--h1-size);
+}
+
+h2,
+.h2 {
+    font-size: var(--h2-size);
+}
+
+h3,
+.h3 {
+    font-size: var(--h3-size);
+}
+
+h4,
+.h4 {
+    font-size: var(--h4-size);
+}

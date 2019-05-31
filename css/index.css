@@ -1,7 +1,14 @@
 @import "normalize.css";
+@import "prismjs/themes/prism-okaidia.css";
 
 @import "base.css";
 @import "flex.css";
 @import "slide.css";
 @import "controls.css";
 @import "code.css";
+
+@import "global.css";
+@import "typography.css";
+@import "button.css";
+@import "presentation.css";
+/*@import "section.css";*/

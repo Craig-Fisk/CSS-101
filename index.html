@@ -13,11 +13,11 @@
   
   <main>
      <aside class="controls">
-      <button class="button controls__button controls__button--left">
+      <button class="button button--icon controls__button controls__button--left">
         <span>&lt;</span>
       </button>
 
-      <button class="button controls__button controls__button--right">
+      <button class="button button--icon controls__button controls__button--right">
         <span>&gt;</span>
       </button>
     </aside>
@@ -33,7 +33,7 @@
      
      <section class="slide">
 
-      <h2>A little about me</h2>
+      <h2 class="h1">A little about me</h2>
 
       <ul class="h2">
         <li>~ 9 years experience as a front end developer</li>
@@ -54,16 +54,304 @@
      
      <section class="slide slide--title">
 
-      <h1>What is CSS?</h1>
+      <h2 class="h1">What is CSS?</h2>
 
     </section>
 
     <section class="slide">
-      <h2>CSS a.k.a. Cascading Style Sheets</h2>
+      <h2 class="h1">CSS a.k.a. Cascading Style Sheets</h2>
+
+      <ul class="h2">
+        <li>One of the cornerstone technologies of the web</li>
+        <ul>
+          <li>HTML (Content)</li>
+          <li>CSS (Looks & Layout)</li>
+          <li>Javascript (Interactivity & Data)</li>
+        </ul>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <blockquote class="h2">
+        <p class="h2">CSS describes how elements should be rendered on screen, on paper, in speech, or on other media.</p>
+        <p class="h2">(CSS) is standardised across web browsers according to the W3C specification. Developed in levels, CSS 1 is now obsolete,<br>
+        CSS 2.1 is a recommendation, and CSS 3, noow split into smaller modules, is progressing on the standardisation track.</p>
+      </blockquote>
+      <cite class="h3">- MDN web docs</cite>
+    </section>
+
+    <section class="slide">
+      <h2 class="h1">CSS is a stylesheet language</h2>
+
+      <p class="h2">It is <strong>not a programming language</strong> (e.g. Javascript, Java etc) and it is <strong>not a markup language</strong> (e.g. HTML, XML, Markdown) <strong>it is a stylesheet language</strong></p>
+
+      <p class="h2"><strong>The syntax allows you to selectively choose a set of elements on a HTML page and apply any number of properties to them.</strong></p>
+
+      <div class="syntax syntax--hidden">
+        <code>
+          <span class="tab-0"><span class="syntax__selector">div.my-class</span> {</span>
+          <span class="tab-1"><span class="syntax__property">background-color</span>: <span class="syntax__value">red</span>;</span>
+          <span class="tab-0">}</span>
+        </code>
+      </div>
+
+      <div class="syntax syntax">
+        <code>
+          <span class="tab-0">div.my-class {</span>
+          <span class="tab-1">background-color: red;</span>
+          <span class="tab-0">}</span>
+        </code>
+      </div>
+
+      <p>
+        <button class="button" id="syntaxButton">Toggle</button>
+      </p>
+    </section>
+
+    <section class="slide">
+      <h2 class="h1">
+        CSS Selectors
+      </h2>
+
+      <p class="h2">
+        5 types of selector:
+      </p>
+
+      <div class="flex-container">
+        <div class="split-20 column">
+          <h3>Simple Selectors</h3>
+          <p class="h3"><strong>Tag:</strong></p>
+          <p class="h3"><code>div</code></p>
+
+          <p class="h3"><strong>Class:</strong></p>
+          <p class="h3"><code>.block__element--modifier</code></p>
+
+          <p class="h3"><strong>ID:</strong></p>
+          <p class="h3"><code>#iAmUnique</code></p>
+        </div>
+        <div class="split-20 column">
+          <h3>Attribute Selectors</h3>
+          <p class="h3"><strong>Has attribute:</strong></p>
+          <p class="h3"><code>[data-my-attribute]</code></p>
+
+          <p class="h3"><strong>Has attribute with value:</strong></p>
+          <p class="h3"><code>[data-index=5]</code></p>
+
+          <p class="h3"><strong>Has attribute and contains value:</strong></p>
+          <p class="h3"><code>[data-colour*="pink"]</code></p>
+        </div>
+        <div class="split-20 column">
+          <h3>Pseudo Class Selectors</h3>
+          <p class="h3"><strong>Select an element in a given state</strong></p>
+          <p class="h3"><code>:hover</code></p>
+          <p class="h3"><code>:first-of-type</code></p>
+          <p class="h3"><code>:disabled</code></p>
+        </div>
+        <div class="split-20 column">
+          <h3>Pseudo Element Selectors</h3>
+          <p class="h3"><strong>Select a certain part of an element</strong></p>
+          <p class="h3"><code>::first-letter</code></p>
+          <p class="h3"><code>::before</code></p>
+          <p class="h3"><code>::selection</code></p>
+        </div>
+        <div class="split-20 column">
+          <h3>Combinators</h3>
+          <p class="h3"><strong>List (this and that):</strong></p>
+          <p class="h3"><code>.foo, #bar</code></p>
+
+          <p class="h3"><strong>Decendent:</strong></p>
+          <p class="h3"><code>#foo .bar</code></p>
+
+          <p class="h3"><strong>Direct Child:</strong></p>
+          <p class="h3"><code>div > p</code></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <h2 class="h1">
+        CSS Selectors
+      </h2>
+
+      <h2>Selectors can be combined:</h2>
+      <pre>
+        <code class="language-css">
+          #myId > div.first-class p[data-color*="red"]:hover::first-letter {  }
+        </code>
+      </pre>
+
+      <p class="h4">Select the first letter of a <code>&lt;p&gt;</code> tag that is being hovered, but only if it has an <strong>attribute</strong> on it called <strong>data-color</strong> containing the string "red" in it's value, but only if it is a decendent of a <code>&lt;div&gt;</code> with the class <code>.first-clsss</code> on it that is a direct decendent of an element with the id "myId"</p>
+    </section>
+
+    <section class="slide">
+      <h2 class="h1">
+        CSS Properties and Values
+      </h2>
+
+      <p class="h3">Within any given selector you can then set any number of properties with given values.</p>
+
+      <p class="h3">Some properties are only valid for certain HTML elements.</p>
+
+      <p class="h3">But the most common properties are generally valid on any HTML element.</p>
+
+      <p class="h3">Each property has a very specific list of values/keywords or specific syntax  that must be used to define their values</p>
+
+      <div class="flex-container">
+        <ul class="h3">
+          <li>margin</li>
+          <li>padding</li>
+          <li>border</li>
+          <li>color</li>
+        </ul>
+
+        <ul class="h3">
+          <li>background</li>
+          <li>opacity</li>
+          <li>font-size</li>
+          <li>line-height</li>
+        </ul>
+
+        <ul class="h3">
+          <li>transform</li>
+          <li>letter-spacing</li>
+          <li>animation</li>
+          <li>etc .....</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="slide slide--title">
+      
+      <h2 class="h1">
+        Now we understand the basic syntax
+      </h2>
+    
+      <h2>
+        Where does CSS live?
+      </h2>
+    
+    </section>
+
+    <section class="slide">
+      <h2 class="h1">
+        Where does CSS live?
+      </h2>
+    
+      <p class="h2">CSS can be included into a HTML document in 3 ways</p>
+
+      <ul class="h3">
+        <li>
+          In a Separate CSS file included in the &lt;HEAD&gt; of the document<br>
+          <code class="language-html">&lt;link href=“url/to/my/stylesheet/style.css" rel="stylesheet" type="text/css"&gt;</code>
+        </li>
+        <li>
+          Within a &lt;style&gt; tag in the &lt;HEAD&gt; or &lt;body&gt; of the document<br>
+          <code class="language-html">
+            &lt;style&gt; #myID { color: red; } &lt;/style&gt;
+          </code>
+        </li>
+        <li>
+          Inline within the style attribute of the particular element<br>
+          <code class="language-html">&lt;p style="color: green;"&gt; My text &lt;/p&gt;</code>
+        </li>
+      </ul>
+    </section>
+
+    <section class="slide slide--title">
+    
+      <h2 class="h1">
+        Time to play with some code!
+      </h2>
+
+      <a class="h2" href="https://codepen.io/the_fisk/pen/YxPyjo?editors=1100" target="_blank">Go to Codepen!</a>
+    
+    </section>
+
+    <section class="slide">
+    
+      <h2 class="h1">
+        Question: What colour will the text be?
+      </h2>
+
+      <div class="flex-container">
+        <div class="split-50">
+          <pre>
+            <code class="language-html">
+      &lt;style&gt;
+        .myClass {
+          color: red;
+        }
+        #myId {
+          color: orange;
+        }
+        div > p {
+          color: green;
+        }
+      &lt;/style&gt;
+
+      &lt;div&gt;
+        &lt;p id="myId" class="myClass"&gt;
+          What Colour Will I be?
+        &lt;/p&gt;
+      &lt;/div&gt;
+              </code>
+          </pre>
+        </div>
+
+        <div class="split-50 flex-container vertical-center">        
+          <style>
+            .myClass {
+              color: red;
+              text-align: center;
+              font-size: 3em;
+            }
+            #myId {
+              color: orange;
+            }
+            div > p.myClass {
+              color: green;
+            }
+          </style>
+
+          <div id="questionHide" class="hidden">
+            <p id="myId" class="myClass">
+              What Colour Will I be?
+            </p>
+          </div>
+
+          <div style="text-align: center;">
+            <button class="button" id="specificityButton">Show/Hide Answer</button>
+          </div>
+        </div>
+      </div>
+    
+    </section>
+
+    <section class="slide">
+      <h2 class="h1">How do we know which style will be applied?</h2>
+
+      <h3>2 Key factors</h3>
+
+      <ul class="h3">
+        <li>
+          Ordering
+          <ul>
+            <li>
+              If specificity of 2 selectors is the same then the one written last is applied</li>
+          </ul>
+        </li>
+        <li>
+          Specificity
+          <ul>
+            <li>Overrides ordering</li>
+          </ul>
+        </li>
+      </ul>
     </section>
   </main>
   
   <!-- Scripts -->
+  <script src="node_modules/prismjs/prism.js"></script>
   <script src="js/index.js" type="module"></script>
 </body>
 </html>
