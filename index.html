@@ -87,81 +87,147 @@
 
       <p class="h2"><strong>The syntax allows you to selectively choose a set of elements on a HTML page and apply any number of properties to them.</strong></p>
 
-      <div class="syntax syntax--hidden">
+      <!-- <div class="syntax syntax--hidden">
         <code>
           <span class="tab-0"><span class="syntax__selector">div.my-class</span> {</span>
           <span class="tab-1"><span class="syntax__property">background-color</span>: <span class="syntax__value">red</span>;</span>
           <span class="tab-0">}</span>
         </code>
-      </div>
+      </div> -->
 
-      <div class="syntax syntax">
+      <div class="syntax h3">
         <code>
-          <span class="tab-0">div.my-class {</span>
-          <span class="tab-1">background-color: red;</span>
-          <span class="tab-0">}</span>
+          <span><span class="syntax__selector">div.my-class</span> {</span>
+          <span class="tab-1"><span class="syntax__property">background-color</span>: <span class="syntax__value">red</span>;</span>
+          <span>}</span>
         </code>
       </div>
 
-      <p>
+      <p class="text-center">
         <button class="button" id="syntaxButton">Toggle</button>
       </p>
     </section>
 
+    <section class="slide slide--title">
+      <h2 class="h1">5 types of CSS selector</h2>
+    </section>
+
     <section class="slide">
       <h2 class="h1">
-        CSS Selectors
+        CSS Selectors - Simple Selectors
       </h2>
 
-      <p class="h2">
-        5 types of selector:
-      </p>
-
       <div class="flex-container">
-        <div class="split-20 column">
-          <h3>Simple Selectors</h3>
+        <div class="split-33 column">
           <p class="h3"><strong>Tag:</strong></p>
           <p class="h3"><code>div</code></p>
-
+        </div>
+        <div class="split-33 column">
           <p class="h3"><strong>Class:</strong></p>
           <p class="h3"><code>.block__element--modifier</code></p>
-
+        </div>
+        <div class="split-33 column">
           <p class="h3"><strong>ID:</strong></p>
           <p class="h3"><code>#iAmUnique</code></p>
         </div>
-        <div class="split-20 column">
-          <h3>Attribute Selectors</h3>
+      </div>
+    </section>
+
+    <section class="slide">
+      <h2 class="h1">
+        CSS Selectors - Attribute Selectors
+      </h2>
+
+      <div class="flex-container">
+        <div class="split-33 column">
           <p class="h3"><strong>Has attribute:</strong></p>
           <p class="h3"><code>[data-my-attribute]</code></p>
-
+        </div>
+        <div class="split-33 column">
           <p class="h3"><strong>Has attribute with value:</strong></p>
           <p class="h3"><code>[data-index=5]</code></p>
-
+        </div>
+        <div class="split-33 column">
           <p class="h3"><strong>Has attribute and contains value:</strong></p>
           <p class="h3"><code>[data-colour*="pink"]</code></p>
         </div>
-        <div class="split-20 column">
-          <h3>Pseudo Class Selectors</h3>
-          <p class="h3"><strong>Select an element in a given state</strong></p>
+      </div>
+    </section>
+
+    <section class="slide">
+      <h2 class="h1">
+        CSS Selectors - Pseudo Class Selectors
+      </h2>
+
+      <p class="h3"><strong>Select an element in a given state</strong></p>
+
+      <div class="flex-container">
+        <div class="split-33 column">
           <p class="h3"><code>:hover</code></p>
+        </div>
+        <div class="split-33 column">
           <p class="h3"><code>:first-of-type</code></p>
+        </div>
+        <div class="split-33 column">
           <p class="h3"><code>:disabled</code></p>
         </div>
-        <div class="split-20 column">
-          <h3>Pseudo Element Selectors</h3>
-          <p class="h3"><strong>Select a certain part of an element</strong></p>
+      </div>
+      <div class="flex-container">
+        <div class="split-33 column">
+          <p class="h3"><code>:last-child</code></p>
+        </div>
+        <div class="split-33 column">
+          <p class="h3"><code>:only-of-type</code></p>
+        </div>
+        <div class="split-33 column">
+          <p class="h3"><code>:focus</code></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <h2 class="h1">
+        CSS Selectors - Pseudo Element Selectors
+      </h2>
+
+      <p class="h3"><strong>Select a certain part of an element</strong></p>
+
+      <div class="flex-container">
+        <div class="split-33 column">
           <p class="h3"><code>::first-letter</code></p>
+        </div>
+        <div class="split-33 column">
           <p class="h3"><code>::before</code></p>
+        </div>
+        <div class="split-33 column">
+          <p class="h3"><code>::after</code></p>
+        </div>
+      </div>
+      <div class="flex-container">
+        <div class="split-50 column">
+          <p class="h3"><code>::first-line</code></p>
+        </div>
+        <div class="split-50 column">
           <p class="h3"><code>::selection</code></p>
         </div>
-        <div class="split-20 column">
-          <h3>Combinators</h3>
+      </div>
+    </section>
+
+    <section class="slide">
+      <h2 class="h1">
+        CSS Selectors - Combinators
+      </h2>
+
+      <div class="flex-container">
+        <div class="split-33 column">
           <p class="h3"><strong>List (this and that):</strong></p>
           <p class="h3"><code>.foo, #bar</code></p>
-
+        </div>
+        <div class="split-33 column">
           <p class="h3"><strong>Decendent:</strong></p>
           <p class="h3"><code>#foo .bar</code></p>
-
+        </div>
+        <div class="split-33 column">
           <p class="h3"><strong>Direct Child:</strong></p>
           <p class="h3"><code>div > p</code></p>
         </div>
@@ -174,13 +240,10 @@
       </h2>
 
       <h2>Selectors can be combined:</h2>
-      <pre>
-        <code class="language-css">
-          #myId > div.first-class p[data-color*="red"]:hover::first-letter {  }
-        </code>
-      </pre>
 
-      <p class="h4">Select the first letter of a <code>&lt;p&gt;</code> tag that is being hovered, but only if it has an <strong>attribute</strong> on it called <strong>data-color</strong> containing the string "red" in it's value, but only if it is a decendent of a <code>&lt;div&gt;</code> with the class <code>.first-clsss</code> on it that is a direct decendent of an element with the id "myId"</p>
+      <p class="h3"><code class="language-css">#myId > div.first-class p[data-color*="red"]:hover::first-letter {  }</code></p>
+
+      <p class="h3">Select the first letter of a <code>&lt;p&gt;</code> tag that is being hovered, but only if it has an <strong>attribute</strong> on it called <strong>data-color</strong> containing the string "red" in it's value, but only if it is a decendent of a <code>&lt;div&gt;</code> with the class <code>.first-clsss</code> on it that is a direct decendent of an element with the id "myId"</p>
     </section>
 
     <section class="slide">
@@ -276,7 +339,7 @@
       <div class="flex-container">
         <div class="split-50">
           <pre>
-            <code class="language-html">
+            <code class="language-html code--large">
       &lt;style&gt;
         .myClass {
           color: red;

@@ -1,5 +1,13 @@
 import Presentation from './presentation.js';
 
-const presentation = new Presentation();
+function initFunction() {
+	document.getElementById('syntaxButton').addEventListener('click', (e) => {
+		document.querySelectorAll('.syntax').forEach(element => {
+			element.classList.toggle('syntax--highlighted');
+		});
+	});
+}
 
-// presentation.goToSlide('end');
+const presentation = new Presentation(initFunction);
+
+presentation.goToSlide(17);

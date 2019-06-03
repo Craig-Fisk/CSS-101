@@ -94,3 +94,7 @@ h4,
 .h4 {
     font-size: var(--h4-size);
 }
+
+.text-center {
+    text-align: center;
+}

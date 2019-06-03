@@ -610,10 +610,104 @@ main {
 
 :root {
   --code-bg-color: #eee;
+  --syntax-selector-color: red;
+  --syntax-property-color: blue;
+  --syntax-value-color: green;
 }
 
 code {
   background: var(--code-bg-color);
+}
+
+code[class*="language-"].code--large {
+	font-size: 2rem;
+}
+
+pre.language-css {
+    font-size: 2.5rem;
+}
+
+.syntax {
+	text-align: center;
+	display: inline-block;
+}
+
+.syntax code {
+	display: inline-block;
+}
+
+.syntax > code > span {
+	display: block;
+	text-align: left;
+	padding: 8px 0;
+}
+
+.syntax > code > span > span {
+	position: relative;
+}
+
+.syntax .tab-1 {
+	padding-left: 40px;
+}
+
+.syntax--highlighted > code > span > span::before {
+	content: "";
+	padding: 2px;
+	border-width: 3px;
+	border-style: solid;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: -6px;
+	top: -6px;
+}
+
+.syntax__selector {
+	color: var(--syntax-selector-color);
+}
+
+.syntax__selector::before {
+	border-color: var(--syntax-selector-color);
+}
+
+.syntax--highlighted .syntax__selector::after {
+	content: "Selector";
+	position: absolute;
+	left: 0%;
+	bottom: 110%;
+	color: var(--syntax-selector-color);
+}
+
+.syntax__property {
+	color: var(--syntax-property-color);
+}
+
+.syntax__property::before {
+	border-color: var(--syntax-property-color);
+}
+
+.syntax--highlighted .syntax__property::after {
+	content: "Property";
+	position: absolute;
+	left: 0%;
+	top: 110%;
+	color: var(--syntax-property-color);
+}
+
+.syntax__value {
+	color: var(--syntax-value-color);
+}
+
+.syntax__value::before {
+	border-color: var(--syntax-value-color);
+}
+
+.syntax--highlighted .syntax__value::after {
+	content: "Value";
+	position: absolute;
+	left: 0%;
+	top: 110%;
+	color: var(--syntax-value-color);
 }
 
 :root {
@@ -720,6 +814,10 @@ h3,
 h4,
 .h4 {
     font-size: var(--h4-size);
+}
+
+.text-center {
+    text-align: center;
 }
 
 :root {

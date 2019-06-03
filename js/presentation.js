@@ -1,7 +1,7 @@
 import Slide from "./slide.js";
 
 export default class Presentation {
-  constructor() {
+  constructor(initFunction = () => {}) {
     this.slides = [];
     this.slideElements = Array.from(document.querySelectorAll('section.slide'));
 
@@ -11,6 +11,7 @@ export default class Presentation {
     }
 
     this.init();
+    initFunction.bind(this)();
 
     this.firstSlide = this.slides[0];
     this.currentSlide = this.slides[0];
@@ -104,7 +105,7 @@ export default class Presentation {
     this.nextSlide.hide();
 
     this.currentSlide = this.slides[position];
-    this.nextSlide = this.slides.length >= position++ ? undefined : this.slides[position];
+    this.nextSlide = this.slides.length >= position++ ? this.slides[position] : undefined;
 
     this.currentSlide.current();
 
