@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en-GB">
+
+<head>
+  <meta charset="utf-8">
+  <title>CSS Custom Properties - Craig Fisk</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="dist/css/slides.css">
+</head>
+
+<body>
+  <main>
+    <aside class="controls">
+      <button class="tcl-button tcl-button--secondary controls__button--left">
+        <i class="b-icon b-icon--chevron-left"></i>
+      </button>
+
+      <button class="tcl-button tcl-button--secondary controls__button--right">
+        <i class="b-icon b-icon--chevron-right"></i>
+      </button>
+    </aside>
+    <section class="slide slide--title">
+
+      <div class="tcl-hero tcl-hero--hub">
+        <div aria-hidden="true" class="tcl-hero__edge-to-edge"></div>
+        <div class="tcl-hero__content">
+          <div class="tcl-hero__head">
+            <div class="tcl-hero__heading-group ">
+              <h1 class="tcl-hero__heading-group--heading ">CSS 101</h1>
+              <h2 class="tcl-hero__heading-group--subheading">UI Guild talk by Craig Fisk</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="slide">
+    
+      <h1 class="tcl-h1--alt">
+        A little about me
+      </h1>
+
+      <ul class="tcl-list tcl-h2">
+        <li>~ 9 years experience as a front end developer</li>
+        <li>
+          Worked across many industries
+          <ul>
+            <li>Games</li>
+            <li>Oil & Gas</li>
+            <li>Automotive</li>
+            <li>etc</li>
+          </ul>
+        </li>
+        <li>Worked at Barclays for 1 year</li>
+        <li>I <3 CSS</li>
+      </ul>
+
+    </section>
+
+    <section class="slide slide--title">
+    
+      <h1 class="tcl-h1--alt">
+        What is CSS?
+      </h1>
+    
+    </section>
+
+    <section class="slide">
+    
+      <h1 class="tcl-h1--alt">
+        CSS a.k.a. Cascading Style Sheets
+      </h1>
+
+      <ul class="tcl-list tcl-h2">
+        <li>One of the cornerstone technologies of the web</li>
+        <ul>
+          <li>HTML (Content)</li>
+          <li>CSS (Looks & Layout)</li>
+          <li>Javascript (Interactivity & Data)</li>
+        </ul>
+      </ul>
+    
+    </section>
+
+    <section class="slide">
+      <blockquote class="tcl-h2">
+        <p>CSS describes how elements should be rendered on screen, on paper, in speech, or on other media.</p>
+      
+        <p>(CSS) is standardized across Web browsers according to the W3C specification. Developed in levels, CSS1 is now
+          obsolete,
+          CSS2.1 is a recommendation, and CSS3, now split into smaller modules, is progressing on the standardization track.
+        </p>
+      </blockquote>
+      <cite class="tcl-h3">- MDN web docs</cite>
+    </section>
+
+    <section class="slide syntax-slide">
+      <h1 class="tcl-h1--alt">
+        CSS is a stylesheet language
+      </h1>
+      <p class="tcl-h4">It's <strong>not a programming language</strong> (like JS) and it's <strong>not a markup language</strong> (like HTML) <strong>it is a stylesheet language</strong></p>
+      <p class="tcl-h4">The syntax allows you to selectively choose a set of elements on a HTML page and apply any number of properties to them.</p>
+
+      <div class="syntax syntax--hidden">
+        <code>
+          <span class="tab-0"><span class="syntax__selector">div.my-class</span> {</span>
+          <span class="tab-1"><span class="syntax__property">background-color</span>: <span class="syntax__value">red</span>;</span>
+          <span class="tab-0">}</span>
+        </code>
+      </div>
+
+      <div class="syntax syntax">
+        <code>
+          <span class="tab-0">div.my-class {</span>
+          <span class="tab-1">background-color: red;</span>
+          <span class="tab-0">}</span>
+        </code>
+      </div>
+
+      <p>
+        <button id="syntaxButton" class="tcl-button">Toggle</button>
+      </p>
+    </section>
+
+    <section class="slide">
+      <h1 class="tcl-h1--alt">
+        CSS Selectors
+      </h1>
+
+      <p class="tcl-h2">
+        5 types of selector:
+      </p>
+
+      <div class="flex-container">
+        <div class="split-20 column">
+          <h3>Simple Selectors</h3>
+          <p class="tcl-h5"><strong>Tag:</strong></p>
+          <p class="tcl-h5"><code>div</code></p>
+
+          <p class="tcl-h5"><strong>Class:</strong></p>
+          <p class="tcl-h5"><code>.block__element--modifier</code></p>
+
+          <p class="tcl-h5"><strong>ID:</strong></p>
+          <p class="tcl-h5"><code>#iAmUnique</code></p>
+        </div>
+        <div class="split-20 column">
+          <h3>Attribute Selectors</h3>
+          <p class="tcl-h5"><strong>Has attribute:</strong></p>
+          <p class="tcl-h5"><code>[data-my-attribute]</code></p>
+
+          <p class="tcl-h5"><strong>Has attribute with value:</strong></p>
+          <p class="tcl-h5"><code>[data-index=5]</code></p>
+
+          <p class="tcl-h5"><strong>Has attribute and contains value:</strong></p>
+          <p class="tcl-h5"><code>[data-colour*="pink"]</code></p>
+        </div>
+        <div class="split-20 column">
+          <h3>Pseudo Class Selectors</h3>
+          <p class="tcl-h5"><strong>Select an element in a given state</strong></p>
+          <p class="tcl-h5"><code>:hover</code></p>
+          <p class="tcl-h5"><code>:first-of-type</code></p>
+          <p class="tcl-h5"><code>:disabled</code></p>
+        </div>
+        <div class="split-20 column">
+          <h3>Pseudo Element Selectors</h3>
+          <p class="tcl-h5"><strong>Select a certain part of an element</strong></p>
+          <p class="tcl-h5"><code>::first-letter</code></p>
+          <p class="tcl-h5"><code>::before</code></p>
+          <p class="tcl-h5"><code>::selection</code></p>
+        </div>
+        <div class="split-20 column">
+          <h3>Combinators</h3>
+          <p class="tcl-h5"><strong>List (this and that):</strong></p>
+          <p class="tcl-h5"><code>.foo, #bar</code></p>
+
+          <p class="tcl-h5"><strong>Decendent:</strong></p>
+          <p class="tcl-h5"><code>#foo .bar</code></p>
+
+          <p class="tcl-h5"><strong>Direct Child:</strong></p>
+          <p class="tcl-h5"><code>div > p</code></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <h1 class="tcl-h1--alt">
+        CSS Selectors
+      </h1>
+
+      <h2>Selectors can be combined:</h2>
+
+      <code class="tcl-h3">
+        <pre>#myId > div.first-class p[data-color*="red"]:hover::first-letter {  }</pre>
+      </code>
+
+      <p class="tcl-h4">Select the first letter of a <code>&lt;p&gt;</code> tag that is being hovered, but only if it has an <strong>attribute</strong> on it called <strong>data-color</strong> containing the string "red" in it's value, but only if it is a decendent of a <code>&lt;div&gt;</code> with the class <code>.first-clsss</code> on it that is a direct decendent of an element with the id "myId"</p>
+    </section>
+
+    <section class="slide">
+      <h1 class="tcl-h1--alt">
+        CSS Properties and Values
+      </h1>
+
+      <p class="tcl-h3">Within any given selector you can then set any number of properties with given values.</p>
+
+      <p class="tcl-h3">Some properties are only valid for certain HTML elements.</p>
+
+      <p class="tcl-h3">But the most common properties are generally valid on any HTML element.</p>
+
+      <p class="tcl-h3">Each property has a very specific list of values/keywords or specific syntax  that must be used to define their values</p>
+
+      <div class="flex-container">
+        <ul class="tcl-list tcl-h3">
+          <li>margin</li>
+          <li>padding</li>
+          <li>border</li>
+          <li>color</li>
+        </ul>
+
+        <ul class="tcl-list tcl-h3">
+          <li>background</li>
+          <li>opacity</li>
+          <li>font-size</li>
+          <li>line-height</li>
+        </ul>
+
+        <ul class="tcl-list tcl-h3">
+          <li>transform</li>
+          <li>letter-spacing</li>
+          <li>animation</li>
+          <li>etc .....</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="slide slide--title">
+      
+      <h1 class="tcl-h2">
+        Now we understand the basic syntax
+      </h1>
+    
+      <h1 class="tcl-h1--alt">
+        Where does CSS live?
+      </h1>
+    
+    </section>
+
+    <section class="slide">
+      <h1 class="tcl-h1--alt">
+        Where does CSS live?
+      </h1>
+    
+      <p class="tcl-h2">CSS can be included into a HTML document in 3 ways</p>
+
+      <ul class="tcl-list tcl-h3">
+        <li>
+          In a Separate CSS file included in the &lt;HEAD&gt; of the document<br>
+          <code>&lt;link href=“url/to/my/stylesheet/style.css" rel="stylesheet" type="text/css"&gt;</code>
+        </li>
+        <li>
+          Within a &lt;style&gt; tag in the &lt;HEAD&gt; or &lt;body&gt; of the document<br>
+          <code>
+            &lt;style&gt; #myID { color: red; } &lt;/style&gt;
+          </code>
+        </li>
+        <li>
+          Inline within the style attribute of the particular element<br>
+          <code>&lt;p style="color: green;"&gt; My text &lt;/p&gt;</code>
+        </li>
+      </ul>
+    </section>
+
+    <section class="slide slide--title">
+    
+      <h1 class="tcl-h1--alt">
+        Time to play with some code!
+      </h1>
+
+      <a class="tcl-h2" href="https://codepen.io/the_fisk/pen/YxPyjo?editors=1100" target="_blank">Go to Codepen!</a>
+    
+    </section>
+
+  </main>
+
+  <script src="js/presentation.js" type="module"></script>
+</body>
+
+</html>

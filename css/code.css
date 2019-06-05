@@ -13,7 +13,8 @@ code[class*="language-"].code--large {
 	font-size: 2rem;
 }
 
-pre.language-css {
+pre.language-css,
+pre.language-html {
     font-size: 2.5rem;
 }
 

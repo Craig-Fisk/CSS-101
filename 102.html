@@ -1,0 +1,720 @@
+<!doctype html>
+<html lang="en-GB">
+
+<head>
+  <meta charset="utf-8">
+  <title>CSS Specificity - Craig Fisk</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="dist/css/slides.css">
+</head>
+
+<body>
+  <main>
+    <aside class="controls">
+      <button class="tcl-button tcl-button--secondary controls__button--left">
+        <i class="b-icon b-icon--chevron-left"></i>
+      </button>
+
+      <button class="tcl-button tcl-button--secondary controls__button--right">
+        <i class="b-icon b-icon--chevron-right"></i>
+      </button>
+    </aside>
+    <section class="slide slide--title">
+
+      <div class="tcl-hero tcl-hero--hub">
+        <div aria-hidden="true" class="tcl-hero__edge-to-edge"></div>
+        <div class="tcl-hero__content">
+          <div class="tcl-hero__head">
+            <div class="tcl-hero__heading-group ">
+              <h1 class="tcl-hero__heading-group--heading ">CSS 102</h1>
+              <h2 class="tcl-hero__heading-group--subheading">CSS Specificity - Craig Fisk</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="slide">
+    
+      <h1 class="tcl-h1--alt">
+        A little about me
+      </h1>
+
+      <ul class="tcl-list tcl-h2">
+        <li>~ 9 years experience as a front end developer</li>
+        <li>
+          Worked across many industries
+          <ul>
+            <li>Games</li>
+            <li>Oil & Gas</li>
+            <li>Automotive</li>
+            <li>etc</li>
+          </ul>
+        </li>
+        <li>Worked at Barclays for 1 year</li>
+        <li>I <3 CSS</li>
+      </ul>
+
+    </section>
+
+    <section class="slide slide--title">
+    
+      <h1 class="tcl-h1--alt">
+        What does Specificity mean in CSS?
+      </h1>
+    
+    </section>
+
+    <section class="slide">
+    
+      <h1 class="tcl-h1--alt">
+        Question: What colour will the text be?
+      </h1>
+
+      <div class="flex-container">
+        <div class="split-50">
+          <pre>
+            <code class="language-html">
+      &lt;style&gt;
+        .myClass {
+          color: red;
+        }
+        #myId {
+          color: orange;
+        }
+        div > p {
+          color: green;
+        }
+      &lt;/style&gt;
+
+      &lt;div&gt;
+        &lt;p id="myId" class="myClass"&gt;
+          What Colour Will I be?
+        &lt;/p&gt;
+      &lt;/div&gt;
+              </code>
+          </pre>
+        </div>
+
+        <div class="split-50 flex-container vertical-center">        
+          <style>
+            .myClass {
+              color: red;
+              text-align: center;
+              font-size: 3em;
+            }
+            #myId {
+              color: orange;
+            }
+            div > p.myClass {
+              color: green;
+            }
+          </style>
+
+          <div id="questionHide" class="syntax--hidden">
+            <p id="myId" class="myClass">
+              What Colour Will I be?
+            </p>
+          </div>
+
+          <div style="text-align: center;">
+            <button class="tcl-button tcl-button--secondary" id="syntaxButton">Show/Hide Answer</button>
+          </div>
+        </div>
+      </div>
+    
+    </section>
+
+    <section class="slide">
+      <h1>How do we know which style will be applied?</h1>
+
+      <h2>2 Key factors</h2>
+
+      <ul class="tcl-list tcl-h3">
+        <li>
+          Ordering
+          <ul class="tcl-list tcl-list--dark" style="font-size:0.8em">
+            <li>
+              If specificity of 2 selectors is the same then the one written last is applied</li>
+          </ul>
+        </li>
+        <li>
+          Specificity
+          <ul class="tcl-list tcl-list--dark" style="font-size:0.8em">
+            <li>Overrides ordering</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section class="slide slide--title">
+    
+      <h1 class="tcl-h1--alt">
+        How do we calculate<sup>*</sup> specificity?
+      </h1>
+
+      <h3>(Yes it is mathmatical.....sort of)</h3>
+    
+    </section>
+
+    <section class="slide slide--title">
+    
+      <h1 class="tcl-h1--alt">
+        Quick Refresher about selectors
+      </h1>
+    
+      <pre>
+        <code class="language-css">
+          /* Element Selectors */
+          h1, p, main, body { }
+
+          /* Class Selectors */
+          .myClass, .my-bem__class { }
+
+          /* ID Selectors */
+          #myUniqueId { }
+
+          /* Attribute Selectors */
+          [data-my-data="Some Data"], [aria-label] { }
+
+          /* Pseudo Element Selectors */
+          a::before, .myClass::first-letter { }
+
+          /* Pseudo Class Selectors */
+          a:hover, .myCheckBox:checked { }
+        </code>
+      </pre>
+    
+    </section>
+
+    <section class="slide">
+      <h1>The calculation</h1>
+      <div class="flex-container">
+
+        <div class="split-20 text-center tcl-card">
+          <div class="tcl-card__content">
+            <div class="tcl-h1 tcl-h1--alt tcl-card__header">
+              0
+            </div>
+            <p class="tcl-h6 tcl-card__footer">!important <sup>*</sup></p>
+          </div>
+        </div>
+
+        <div class="split-20 text-center tcl-card">
+          <div class="tcl-card__content">
+            <div class="tcl-h1 tcl-h1--alt tcl-card__header">
+              0
+            </div>
+            <p class="tcl-h6 tcl-card__footer">inline-style <sup>*</sup></p>
+          </div>
+        </div>
+
+        <div class="split-20 text-center tcl-card">
+          <div class="tcl-card__content">
+            <div class="tcl-h1 tcl-h1--alt tcl-card__header">
+              0
+            </div>
+            <p class="tcl-h6 tcl-card__footer">#ID</p>
+          </div>
+        </div>
+
+        <div class="split-20 text-center tcl-card">
+          <div class="tcl-card__content">
+            <div class="tcl-h1 tcl-h1--alt tcl-card__header">
+              0
+            </div>
+            <p class="tcl-h6 tcl-card__footer">.class, [attribute], :pseudo-class</p>
+          </div>
+        </div>
+
+        <div class="split-20 text-center tcl-card">
+          <div class="tcl-card__content">
+            <div class="tcl-h1 tcl-h1--alt tcl-card__header">
+              0
+            </div>
+            <p class="tcl-h6 tcl-card__footer">Element,<br> ::pseudo-element</p>
+          </div>
+        </div>
+
+      </div>
+
+      <br>
+
+      <div class="text-center flex-container">
+        <div class="split-20">
+          <span class="tcl-h4">
+            Most specific
+          </span>
+        </div>
+        <div style="flex-grow: 2">
+          <span class="tcl-h4">
+            ----------------------------------------->
+          </span>
+        </div>
+        <div class="split-20">
+          <span class="tcl-h4">
+            Least specific
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <h1>Example 1</h1>
+      <div class="flex-container">
+    
+        <div class="split-20 text-center tcl-card">
+          <div class="tcl-card__content">
+            <div class="tcl-h1 tcl-h1--alt tcl-card__header">
+              0
+            </div>
+            <p class="tcl-h6 tcl-card__footer">!important <sup>*</sup></p>
+          </div>
+        </div>
+    
+        <div class="split-20 text-center tcl-card">
+          <div class="tcl-card__content">
+            <div class="tcl-h1 tcl-h1--alt tcl-card__header">
+              0
+            </div>
+            <p class="tcl-h6 tcl-card__footer">inline-style <sup>*</sup></p>
+          </div>
+        </div>
+    
+        <div class="split-20 text-center tcl-card">
+          <div class="tcl-card__content">
+            <div class="tcl-h1 tcl-h1--alt tcl-card__header">
+              0
+            </div>
+            <p class="tcl-h6 tcl-card__footer">#ID</p>
+          </div>
+        </div>
+    
+        <div class="split-20 text-center tcl-card">
+          <div class="tcl-card__content">
+            <div class="tcl-h1 tcl-h1--alt tcl-card__header">
+              1
+            </div>
+            <p class="tcl-h6 tcl-card__footer">.class, [attribute], :pseudo-class</p>
+          </div>
+        </div>
+    
+        <div class="split-20 text-center tcl-card">
+          <div class="tcl-card__content">
+            <div class="tcl-h1 tcl-h1--alt tcl-card__header">
+              0
+            </div>
+            <p class="tcl-h6 tcl-card__footer">Element,<br> ::pseudo-element</p>
+          </div>
+        </div>
+    
+      </div>
+    
+      <br>
+    
+      <div class="flex-container justify-center">
+        <div class="split-50">
+          <pre>
+            <code class="language-css">
+              /* 0-0-0-1-0 */
+              .my-class { }
+            </code>
+          </pre>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="slide">
+      <h1>Example 2</h1>
+      <div class="flex-container">
+    
+        <div class="split-20 text-center tcl-card">
+          <div class="tcl-card__content">
+            <div class="tcl-h1 tcl-h1--alt tcl-card__header">
+              0
+            </div>
+            <p class="tcl-h6 tcl-card__footer">!important <sup>*</sup></p>
+          </div>
+        </div>
+    
+        <div class="split-20 text-center tcl-card">
+          <div class="tcl-card__content">
+            <div class="tcl-h1 tcl-h1--alt tcl-card__header">
+              0
+            </div>
+            <p class="tcl-h6 tcl-card__footer">inline-style <sup>*</sup></p>
+          </div>
+        </div>
+    
+        <div class="split-20 text-center tcl-card">
+          <div class="tcl-card__content">
+            <div class="tcl-h1 tcl-h1--alt tcl-card__header">
+              0
+            </div>
+            <p class="tcl-h6 tcl-card__footer">#ID</p>
+          </div>
+        </div>
+    
+        <div class="split-20 text-center tcl-card">
+          <div class="tcl-card__content">
+            <div class="tcl-h1 tcl-h1--alt tcl-card__header">
+              1
+            </div>
+            <p class="tcl-h6 tcl-card__footer">.class, [attribute], :pseudo-class</p>
+          </div>
+        </div>
+    
+        <div class="split-20 text-center tcl-card">
+          <div class="tcl-card__content">
+            <div class="tcl-h1 tcl-h1--alt tcl-card__header">
+              1
+            </div>
+            <p class="tcl-h6 tcl-card__footer">Element,<br> ::pseudo-element</p>
+          </div>
+        </div>
+    
+      </div>
+    
+      <br>
+    
+      <div class="flex-container justify-center">
+        <div class="split-50">
+          <pre>
+                <code class="language-css">
+                  /* 0-0-0-1-1 */
+                  /* Winner! */
+                  p.special-text { }
+
+                  /* 0-0-0-1-0 */
+                  /* Loser! */
+                  .my-class { }
+                </code>
+              </pre>
+        </div>
+      </div>
+    
+    </section>
+
+    <section class="slide">
+      <h1>Example 3</h1>
+      <div class="flex-container">
+    
+        <div class="split-20 text-center tcl-card">
+          <div class="tcl-card__content">
+            <div class="tcl-h1 tcl-h1--alt tcl-card__header">
+              0
+            </div>
+            <p class="tcl-h6 tcl-card__footer">!important <sup>*</sup></p>
+          </div>
+        </div>
+    
+        <div class="split-20 text-center tcl-card">
+          <div class="tcl-card__content">
+            <div class="tcl-h1 tcl-h1--alt tcl-card__header">
+              0
+            </div>
+            <p class="tcl-h6 tcl-card__footer">inline-style <sup>*</sup></p>
+          </div>
+        </div>
+    
+        <div class="split-20 text-center tcl-card">
+          <div class="tcl-card__content">
+            <div class="tcl-h1 tcl-h1--alt tcl-card__header">
+              1
+            </div>
+            <p class="tcl-h6 tcl-card__footer">#ID</p>
+          </div>
+        </div>
+    
+        <div class="split-20 text-center tcl-card">
+          <div class="tcl-card__content">
+            <div class="tcl-h1 tcl-h1--alt tcl-card__header">
+              0
+            </div>
+            <p class="tcl-h6 tcl-card__footer">.class, [attribute], :pseudo-class</p>
+          </div>
+        </div>
+    
+        <div class="split-20 text-center tcl-card">
+          <div class="tcl-card__content">
+            <div class="tcl-h1 tcl-h1--alt tcl-card__header">
+              0
+            </div>
+            <p class="tcl-h6 tcl-card__footer">Element,<br> ::pseudo-element</p>
+          </div>
+        </div>
+    
+      </div>
+    
+      <br>
+    
+      <div class="flex-container justify-center">
+        <div class="split-50">
+          <pre>
+                <code class="language-css">
+                  /* 0-0-1-0-0 */
+                  /* Winner! */
+                  #myUniqueId { }
+                  
+                  /* 0-0-0-1-1 */
+                  /* Loser! */
+                  p.special-text { }
+                </code>
+              </pre>
+        </div>
+      </div>
+    
+    </section>
+
+    <section class="slide">
+      <h1>Example 4</h1>
+      <div class="flex-container">
+    
+        <div class="split-20 text-center tcl-card">
+          <div class="tcl-card__content">
+            <div class="tcl-h1 tcl-h1--alt tcl-card__header">
+              0
+            </div>
+            <p class="tcl-h6 tcl-card__footer">!important <sup>*</sup></p>
+          </div>
+        </div>
+    
+        <div class="split-20 text-center tcl-card">
+          <div class="tcl-card__content">
+            <div class="tcl-h1 tcl-h1--alt tcl-card__header">
+              0
+            </div>
+            <p class="tcl-h6 tcl-card__footer">inline-style <sup>*</sup></p>
+          </div>
+        </div>
+    
+        <div class="split-20 text-center tcl-card">
+          <div class="tcl-card__content">
+            <div class="tcl-h1 tcl-h1--alt tcl-card__header">
+              1
+            </div>
+            <p class="tcl-h6 tcl-card__footer">#ID</p>
+          </div>
+        </div>
+    
+        <div class="split-20 text-center tcl-card">
+          <div class="tcl-card__content">
+            <div class="tcl-h1 tcl-h1--alt tcl-card__header">
+              0
+            </div>
+            <p class="tcl-h6 tcl-card__footer">.class, [attribute], :pseudo-class</p>
+          </div>
+        </div>
+    
+        <div class="split-20 text-center tcl-card">
+          <div class="tcl-card__content">
+            <div class="tcl-h1 tcl-h1--alt tcl-card__header">
+              0
+            </div>
+            <p class="tcl-h6 tcl-card__footer">Element,<br> ::pseudo-element</p>
+          </div>
+        </div>
+    
+      </div>
+    
+      <br>
+    
+      <div class="flex-container justify-center">
+        <div class="split-50">
+          <pre>
+                <code class="language-css">
+  /* 0-0-1-0-0 */
+  /* Winner! */
+  #myUniqueId { }
+  
+  /* 0-0-0-3-5 */
+  /* Loser! */
+  section > div.myClass p.secondClass > a:hover::first-letter { }
+                </code>
+              </pre>
+        </div>
+      </div>
+    
+    </section>
+
+    <section class="slide">
+      <h1>Example 5</h1>
+      <div class="flex-container">
+    
+        <div class="split-20 text-center tcl-card">
+          <div class="tcl-card__content">
+            <div class="tcl-h1 tcl-h1--alt tcl-card__header">
+              0
+            </div>
+            <p class="tcl-h6 tcl-card__footer">!important <sup>*</sup></p>
+          </div>
+        </div>
+    
+        <div class="split-20 text-center tcl-card">
+          <div class="tcl-card__content">
+            <div class="tcl-h1 tcl-h1--alt tcl-card__header">
+              1
+            </div>
+            <p class="tcl-h6 tcl-card__footer">inline-style <sup>*</sup></p>
+          </div>
+        </div>
+    
+        <div class="split-20 text-center tcl-card">
+          <div class="tcl-card__content">
+            <div class="tcl-h1 tcl-h1--alt tcl-card__header">
+              0
+            </div>
+            <p class="tcl-h6 tcl-card__footer">#ID</p>
+          </div>
+        </div>
+    
+        <div class="split-20 text-center tcl-card">
+          <div class="tcl-card__content">
+            <div class="tcl-h1 tcl-h1--alt tcl-card__header">
+              0
+            </div>
+            <p class="tcl-h6 tcl-card__footer">.class, [attribute], :pseudo-class</p>
+          </div>
+        </div>
+    
+        <div class="split-20 text-center tcl-card">
+          <div class="tcl-card__content">
+            <div class="tcl-h1 tcl-h1--alt tcl-card__header">
+              0
+            </div>
+            <p class="tcl-h6 tcl-card__footer">Element,<br> ::pseudo-element</p>
+          </div>
+        </div>
+    
+      </div>
+    
+      <br>
+    
+      <div class="flex-container justify-center">
+        <div class="split-50">
+          <pre>
+                <code class="language-html">
+  &lt;!-- 0-0-1-0-0 --&gt;
+  &lt;!-- Loser! --&gt;
+  &lt;style&gt;
+    #myUniqueId { 
+      color: red;
+    }
+  &lt;/style&gt;
+
+  &lt;!-- 0-1-0-0-0 --&gt;
+  &lt;!-- Winner! --&gt;
+  &lt;p id="myUniqueId" style="color: blue;"&gt; Hello &lt;/p&gt;
+                </code>
+              </pre>
+        </div>
+      </div>
+    
+    </section>
+
+    <section class="slide">
+      <h1>Example 6</h1>
+      <div class="flex-container">
+    
+        <div class="split-20 text-center tcl-card">
+          <div class="tcl-card__content">
+            <div class="tcl-h1 tcl-h1--alt tcl-card__header">
+              1
+            </div>
+            <p class="tcl-h6 tcl-card__footer">!important <sup>*</sup></p>
+          </div>
+        </div>
+    
+        <div class="split-20 text-center tcl-card">
+          <div class="tcl-card__content">
+            <div class="tcl-h1 tcl-h1--alt tcl-card__header">
+              0
+            </div>
+            <p class="tcl-h6 tcl-card__footer">inline-style <sup>*</sup></p>
+          </div>
+        </div>
+    
+        <div class="split-20 text-center tcl-card">
+          <div class="tcl-card__content">
+            <div class="tcl-h1 tcl-h1--alt tcl-card__header">
+              0
+            </div>
+            <p class="tcl-h6 tcl-card__footer">#ID</p>
+          </div>
+        </div>
+    
+        <div class="split-20 text-center tcl-card">
+          <div class="tcl-card__content">
+            <div class="tcl-h1 tcl-h1--alt tcl-card__header">
+              0
+            </div>
+            <p class="tcl-h6 tcl-card__footer">.class, [attribute], :pseudo-class</p>
+          </div>
+        </div>
+    
+        <div class="split-20 text-center tcl-card">
+          <div class="tcl-card__content">
+            <div class="tcl-h1 tcl-h1--alt tcl-card__header">
+              0
+            </div>
+            <p class="tcl-h6 tcl-card__footer">Element,<br> ::pseudo-element</p>
+          </div>
+        </div>
+    
+      </div>
+    
+      <br>
+    
+      <div class="flex-container justify-center">
+        <div class="split-50">
+          <pre>
+                <code class="language-html">
+  &lt;!-- 1-0-0-0-0 --&gt;
+  &lt;!-- Winner! --&gt;
+  &lt;style&gt;
+    #myUniqueId { 
+      color: red !important;
+    }
+  &lt;/style&gt;
+
+  &lt;!-- 0-1-0-0-0 --&gt;
+  &lt;!-- Loser! --&gt;
+  &lt;p id="myUniqueId" style="color: blue;"&gt; Hello &lt;/p&gt;
+                </code>
+              </pre>
+        </div>
+      </div>
+    
+    </section>
+
+    <section class="slide">
+      <h1>Recap</h1>
+    
+      <h2>Which CSS properties will apply?</h2>
+    
+      <ul class="tcl-list tcl-h3">
+        <li>
+          Which selector is more specific?
+          <ul>
+            <li><strong>!important</strong> => <strong>Inline-style</strong> => <strong>#ID</strong> => <strong>.class</strong>, <strong>[attribute]</strong>, <strong>:pseudo-class</strong> => <strong>Element</strong>, <strong>::pseudo-element</strong><br><br> OR <br><br></li>
+            <li>Same specificity? - Which ever comes last on the page</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section class="slide slide--title">
+      <h1>Any Questions?</h1>
+    </section>
+
+  </main>
+
+  <script src="js/presentation.js" type="module"></script>
+  <script src="node_modules/prismjs/prism.js"></script>
+
+</body>
+
+</html>

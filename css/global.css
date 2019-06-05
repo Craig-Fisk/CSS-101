@@ -4,3 +4,7 @@
     --alt-color: #0169f1;
     --text-color: #333333;
 }
+
+.hidden {
+	display: none;
+}

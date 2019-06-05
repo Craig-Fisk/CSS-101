@@ -6,8 +6,10 @@ function initFunction() {
 			element.classList.toggle('syntax--highlighted');
 		});
 	});
+
+	document.getElementById('specificityButton').addEventListener('click', (e) => {
+		document.getElementById('questionHide').classList.toggle('hidden');
+	});
 }
 
 const presentation = new Presentation(initFunction);
-
-presentation.goToSlide(17);

@@ -361,12 +361,11 @@
           </pre>
         </div>
 
-        <div class="split-50 flex-container vertical-center">        
+        <div class="split-50">        
           <style>
             .myClass {
               color: red;
               text-align: center;
-              font-size: 3em;
             }
             #myId {
               color: orange;
@@ -376,18 +375,23 @@
             }
           </style>
 
-          <div id="questionHide" class="hidden">
-            <p id="myId" class="myClass">
+          <div class="text-center">
+            <button class="button" id="specificityButton">Show/Hide Answer</button>
+          </div>
+
+          <div id="questionHide" class="hidden text-center">
+            <p id="myId" class="myClass h1">
               What Colour Will I be?
             </p>
           </div>
 
-          <div style="text-align: center;">
-            <button class="button" id="specificityButton">Show/Hide Answer</button>
-          </div>
         </div>
       </div>
     
+    </section>
+
+    <section class="slide slide--title">
+      <h2 class="h1">Specificity</h2>
     </section>
 
     <section class="slide">
@@ -410,6 +414,413 @@
           </ul>
         </li>
       </ul>
+    </section>
+
+    <section class="slide slide--title">
+    
+      <h2 class="h1">
+        How do we calculate<sup>*</sup> specificity?
+      </h2>
+
+      <h3>(Yes it involves maths.....sort of)</h3>
+    
+    </section>
+
+    <section class="slide">
+      <h2>The calculation</h2>
+      <div class="flex-container">
+
+        <div class="split-20 text-center card section">
+          <div class="card__title">
+              0
+          </div>
+          <p class="card__body h4">!important <sup>*</sup></p>
+        </div>
+        <div class="split-20 text-center card section">
+          <div class="card__title">
+              0
+          </div>
+          <p class="card__body h4">inline-style <sup>*</sup></p>
+        </div>
+        <div class="split-20 text-center card section">
+          <div class="card__title">
+              0
+          </div>
+          <p class="card__body h4">#ID</p>
+        </div>
+        <div class="split-20 text-center card section">
+          <div class="card__title">
+              0
+          </div>
+          <p class="card__body h4">.class, [attribute], :pseudo-class</p>
+        </div>
+        <div class="split-20 text-center card section">
+          <div class="card__title">
+              0
+          </div>
+          <p class="card__body h4">Element,<br> ::pseudo-element</p>
+        </div>
+
+      </div>
+
+      <br>
+
+      <div class="text-center flex-container">
+        <div class="split-20">
+          <span class="h4">
+            Most specific
+          </span>
+        </div>
+        <div style="flex-grow: 2">
+          <span class="h4">
+            ----------------------------------------->
+          </span>
+        </div>
+        <div class="split-20">
+          <span class="h4">
+            Least specific
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <h2>Example 1</h2>
+      <div class="flex-container">
+
+        <div class="split-20 text-center card section">
+          <div class="card__title">
+              0
+          </div>
+          <p class="card__body h4">!important <sup>*</sup></p>
+        </div>
+        <div class="split-20 text-center card section">
+          <div class="card__title">
+              0
+          </div>
+          <p class="card__body h4">inline-style <sup>*</sup></p>
+        </div>
+        <div class="split-20 text-center card section">
+          <div class="card__title">
+              0
+          </div>
+          <p class="card__body h4">#ID</p>
+        </div>
+        <div class="split-20 text-center card section">
+          <div class="card__title">
+              1
+          </div>
+          <p class="card__body h4">.class, [attribute], :pseudo-class</p>
+        </div>
+        <div class="split-20 text-center card section">
+          <div class="card__title">
+              0
+          </div>
+          <p class="card__body h4">Element,<br> ::pseudo-element</p>
+        </div>
+        
+      </div>
+    
+      <br>
+
+      <pre>
+        <code class="language-css">
+          /* 0-0-0-1-0 */
+          .my-class { }
+        </code>
+      </pre>
+
+    </section>
+
+    <section class="slide">
+      <h2>Example 2</h2>
+      <div class="flex-container">
+
+        <div class="split-20 text-center card section">
+          <div class="card__title">
+              0
+          </div>
+          <p class="card__body h4">!important <sup>*</sup></p>
+        </div>
+        <div class="split-20 text-center card section">
+          <div class="card__title">
+              0
+          </div>
+          <p class="card__body h4">inline-style <sup>*</sup></p>
+        </div>
+        <div class="split-20 text-center card section">
+          <div class="card__title">
+              0
+          </div>
+          <p class="card__body h4">#ID</p>
+        </div>
+        <div class="split-20 text-center card section">
+          <div class="card__title">
+              1
+          </div>
+          <p class="card__body h4">.class, [attribute], :pseudo-class</p>
+        </div>
+        <div class="split-20 text-center card section">
+          <div class="card__title">
+              1
+          </div>
+          <p class="card__body h4">Element,<br> ::pseudo-element</p>
+        </div>
+        
+      </div>
+    
+      <br>
+
+      <pre>
+        <code class="language-css">
+          /* 0-0-0-1-1 */
+          /* Winner! */
+          p.special-text { }
+
+          /* 0-0-0-1-0 */
+          /* Loser! */
+          .my-class { }
+        </code>
+      </pre>
+    
+    </section>
+
+    <section class="slide">
+      <h2>Example 3</h2>
+      <div class="flex-container">
+
+        <div class="split-20 text-center card section">
+          <div class="card__title">
+              0
+          </div>
+          <p class="card__body h4">!important <sup>*</sup></p>
+        </div>
+        <div class="split-20 text-center card section">
+          <div class="card__title">
+              0
+          </div>
+          <p class="card__body h4">inline-style <sup>*</sup></p>
+        </div>
+        <div class="split-20 text-center card section">
+          <div class="card__title">
+              1
+          </div>
+          <p class="card__body h4">#ID</p>
+        </div>
+        <div class="split-20 text-center card section">
+          <div class="card__title">
+              0
+          </div>
+          <p class="card__body h4">.class, [attribute], :pseudo-class</p>
+        </div>
+        <div class="split-20 text-center card section">
+          <div class="card__title">
+              0
+          </div>
+          <p class="card__body h4">Element,<br> ::pseudo-element</p>
+        </div>
+        
+      </div>
+    
+      <br>
+
+      <pre>
+        <code class="language-css">
+          /* 0-0-1-0-0 */
+          /* Winner! */
+          #myUniqueId { }
+          
+          /* 0-0-0-1-1 */
+          /* Loser! */
+          p.special-text { }
+        </code>
+      </pre>
+    
+    </section>
+
+    <section class="slide">
+      <h2>Example 4</h2>
+      <div class="flex-container">
+
+        <div class="split-20 text-center card section">
+          <div class="card__title">
+              0
+          </div>
+          <p class="card__body h4">!important <sup>*</sup></p>
+        </div>
+        <div class="split-20 text-center card section">
+          <div class="card__title">
+              0
+          </div>
+          <p class="card__body h4">inline-style <sup>*</sup></p>
+        </div>
+        <div class="split-20 text-center card section">
+          <div class="card__title">
+              1
+          </div>
+          <p class="card__body h4">#ID</p>
+        </div>
+        <div class="split-20 text-center card section">
+          <div class="card__title">
+              0
+          </div>
+          <p class="card__body h4">.class, [attribute], :pseudo-class</p>
+        </div>
+        <div class="split-20 text-center card section">
+          <div class="card__title">
+              0
+          </div>
+          <p class="card__body h4">Element,<br> ::pseudo-element</p>
+        </div>
+        
+      </div>
+    
+      <br>
+
+      <pre>
+        <code class="language-css">
+            /* 0-0-1-0-0 */
+            /* Winner! */
+            #myUniqueId { }
+            
+            /* 0-0-0-3-5 */
+            /* Loser! */
+            section > div.myClass p.secondClass > a:hover::first-letter { }
+        </code>
+      </pre>
+
+    </section>
+
+    <section class="slide">
+      <h2>Example 5</h2>
+      <div class="flex-container">
+
+        <div class="split-20 text-center card section">
+          <div class="card__title">
+              0
+          </div>
+          <p class="card__body h4">!important <sup>*</sup></p>
+        </div>
+        <div class="split-20 text-center card section">
+          <div class="card__title">
+              1
+          </div>
+          <p class="card__body h4">inline-style <sup>*</sup></p>
+        </div>
+        <div class="split-20 text-center card section">
+          <div class="card__title">
+              0
+          </div>
+          <p class="card__body h4">#ID</p>
+        </div>
+        <div class="split-20 text-center card section">
+          <div class="card__title">
+              0
+          </div>
+          <p class="card__body h4">.class, [attribute], :pseudo-class</p>
+        </div>
+        <div class="split-20 text-center card section">
+          <div class="card__title">
+              0
+          </div>
+          <p class="card__body h4">Element,<br> ::pseudo-element</p>
+        </div>
+        
+      </div>
+    
+      <br>
+      <pre>
+        <code class="language-html">
+            &lt;!-- 0-0-1-0-0 --&gt;
+            &lt;!-- Loser! --&gt;
+            &lt;style&gt;
+              #myUniqueId { 
+                color: red;
+              }
+            &lt;/style&gt;
+            &lt;!-- 0-1-0-0-0 --&gt;
+            &lt;!-- Winner! --&gt;
+            &lt;p id="myUniqueId" style="color: blue;"&gt; Hello &lt;/p&gt;
+            </code>
+          </pre>
+        </div>
+      </div>
+    
+    </section>
+
+    <section class="slide">
+      <h2>Example 6</h2>
+      <div class="flex-container">
+
+        <div class="split-20 text-center card section">
+          <div class="card__title">
+              1
+          </div>
+          <p class="card__body h4">!important <sup>*</sup></p>
+        </div>
+        <div class="split-20 text-center card section">
+          <div class="card__title">
+              0
+          </div>
+          <p class="card__body h4">inline-style <sup>*</sup></p>
+        </div>
+        <div class="split-20 text-center card section">
+          <div class="card__title">
+              0
+          </div>
+          <p class="card__body h4">#ID</p>
+        </div>
+        <div class="split-20 text-center card section">
+          <div class="card__title">
+              0
+          </div>
+          <p class="card__body h4">.class, [attribute], :pseudo-class</p>
+        </div>
+        <div class="split-20 text-center card section">
+          <div class="card__title">
+              0
+          </div>
+          <p class="card__body h4">Element,<br> ::pseudo-element</p>
+        </div>
+        
+      </div>
+    
+      <br>
+      <pre>
+          <code class="language-html">
+&lt;!-- 1-0-0-0-0 --&gt;
+&lt;!-- Winner! --&gt;
+&lt;style&gt;
+#myUniqueId { 
+  color: red !important;
+}
+&lt;/style&gt;
+&lt;!-- 0-1-0-0-0 --&gt;
+&lt;!-- Loser! --&gt;
+&lt;p id="myUniqueId" style="color: blue;"&gt; Hello &lt;/p&gt;
+        </code>
+      </pre>
+
+    </section>
+
+    <section class="slide">
+      <h2 class="h1">Recap</h2>
+    
+      <h2>Which CSS properties will apply?</h2>
+    
+      <ul class="h3">
+        <li>
+          Which selector is more specific?
+          <ul>
+            <li><strong>!important</strong> => <strong>Inline-style</strong> => <strong>#ID</strong> => <strong>.class</strong>, <strong>[attribute]</strong>, <strong>:pseudo-class</strong> => <strong>Element</strong>, <strong>::pseudo-element</strong><br><br> OR <br><br></li>
+            <li>Same specificity? - Which ever comes last on the page</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section class="slide slide--title">
+      <h2>Any Questions?</h2>
     </section>
   </main>
   
